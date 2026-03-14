@@ -1,5 +1,10 @@
+//! Webots `v2025a` bindings and safe wrapper layer.
+//!
+//! Most applications construct [`Webots`] and then request typed device handles from it.
+
 pub mod bindings;
 
+/// The Webots API version implemented by this module tree.
 pub const API_VERSION: &str = "v2025a";
 
 #[macro_export]
@@ -27,13 +32,16 @@ pub mod device;
 pub mod supervisor;
 mod webots;
 
+/// Supervisor helpers for scene-tree and simulation management APIs.
 pub use supervisor::Supervisor;
+/// Primary controller entrypoint for the `v2025a` API surface.
 pub use webots::{Simulator, Webots};
 
 use std::ffi::NulError;
 use std::str::Utf8Error;
 use thiserror::Error;
 
+/// Errors returned by safe wrapper operations.
 #[derive(Debug, Error)]
 pub enum SimulatorError {
     #[error("unknown device: {0}")]

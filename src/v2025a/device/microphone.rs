@@ -1,8 +1,8 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
     self, wb_microphone_disable, wb_microphone_enable, wb_microphone_get_sample_data,
     wb_microphone_get_sample_size, wb_microphone_get_sampling_period,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Microphone(bindings::WbDeviceTag);

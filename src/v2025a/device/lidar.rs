@@ -1,14 +1,13 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, WbLidarPoint, wb_lidar_disable, wb_lidar_disable_point_cloud, wb_lidar_enable,
-    wb_lidar_enable_point_cloud, wb_lidar_get_fov, wb_lidar_get_frequency,
-    wb_lidar_get_horizontal_resolution, wb_lidar_get_layer_point_cloud,
-    wb_lidar_get_layer_range_image, wb_lidar_get_max_frequency, wb_lidar_get_max_range,
-    wb_lidar_get_min_frequency, wb_lidar_get_min_range, wb_lidar_get_number_of_layers,
-    wb_lidar_get_number_of_points, wb_lidar_get_point_cloud, wb_lidar_get_range_image,
-    wb_lidar_get_sampling_period, wb_lidar_get_vertical_fov, wb_lidar_is_point_cloud_enabled,
-    wb_lidar_set_frequency,
+    wb_lidar_disable, wb_lidar_disable_point_cloud, wb_lidar_enable, wb_lidar_enable_point_cloud,
+    wb_lidar_get_fov, wb_lidar_get_frequency, wb_lidar_get_horizontal_resolution,
+    wb_lidar_get_layer_point_cloud, wb_lidar_get_layer_range_image, wb_lidar_get_max_frequency,
+    wb_lidar_get_max_range, wb_lidar_get_min_frequency, wb_lidar_get_min_range,
+    wb_lidar_get_number_of_layers, wb_lidar_get_number_of_points, wb_lidar_get_point_cloud,
+    wb_lidar_get_range_image, wb_lidar_get_sampling_period, wb_lidar_get_vertical_fov,
+    wb_lidar_is_point_cloud_enabled, wb_lidar_set_frequency, WbDeviceTag, WbLidarPoint,
 };
+use crate::v2025a::SimulatorError;
 use derive_new::new;
 use derive_setters::Setters;
 

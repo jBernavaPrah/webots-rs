@@ -1,12 +1,11 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_position_sensor_disable, wb_position_sensor_enable,
-    wb_position_sensor_get_brake, wb_position_sensor_get_motor,
-    wb_position_sensor_get_sampling_period, wb_position_sensor_get_type,
-    wb_position_sensor_get_value,
+    wb_position_sensor_disable, wb_position_sensor_enable, wb_position_sensor_get_brake,
+    wb_position_sensor_get_motor, wb_position_sensor_get_sampling_period,
+    wb_position_sensor_get_type, wb_position_sensor_get_value, WbDeviceTag,
 };
 use crate::v2025a::bindings::{WbJointType_WB_LINEAR, WbJointType_WB_ROTATIONAL};
 use crate::v2025a::device::motor::MotorType;
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct PositionSensor {

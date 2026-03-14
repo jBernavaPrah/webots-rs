@@ -182,7 +182,10 @@ fn ensure_feature_in_manifest(
         return Ok(());
     }
 
-    let updated = manifest.replace("runtime_link = []", &format!("{feature_line}\nruntime_link = []"));
+    let updated = manifest.replace(
+        "runtime_link = []",
+        &format!("{feature_line}\nruntime_link = []"),
+    );
     if updated == manifest {
         return Err("Could not update Cargo.toml features section.".into());
     }
@@ -225,17 +228,29 @@ fn scaffold_version(
 ) -> Result<(), Box<dyn std::error::Error>> {
     let source_root = version_root_path(workspace_root, from);
     if !source_root.exists() {
-        return Err(format!("Source version directory does not exist: {}", source_root.display()).into());
+        return Err(format!(
+            "Source version directory does not exist: {}",
+            source_root.display()
+        )
+        .into());
     }
 
     let destination_root = version_root_path(workspace_root, version);
     if destination_root.exists() {
-        return Err(format!("Destination version directory already exists: {}", destination_root.display()).into());
+        return Err(format!(
+            "Destination version directory already exists: {}",
+            destination_root.display()
+        )
+        .into());
     }
 
     let source_header = wrapper_header_path(workspace_root, from);
     if !source_header.exists() {
-        return Err(format!("Source wrapper header does not exist: {}", source_header.display()).into());
+        return Err(format!(
+            "Source wrapper header does not exist: {}",
+            source_header.display()
+        )
+        .into());
     }
 
     let destination_header = wrapper_header_path(workspace_root, version);
@@ -331,9 +346,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             version,
             webots_home,
         }) => generate_bindings(workspace_root, &normalize_version(&version), webots_home),
-        Some(Commands::Scaffold { version, from }) => {
-            scaffold_version(workspace_root, &normalize_version(&version), &normalize_version(&from))
-        }
+        Some(Commands::Scaffold { version, from }) => scaffold_version(
+            workspace_root,
+            &normalize_version(&version),
+            &normalize_version(&from),
+        ),
         None => {
             let version = cli.version.ok_or("Missing version argument.")?;
             generate_bindings(

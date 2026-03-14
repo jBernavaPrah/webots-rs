@@ -1,4 +1,3 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
     self, wb_radio_disable, wb_radio_enable, wb_radio_get_address, wb_radio_get_bitrate,
     wb_radio_get_channel, wb_radio_get_frequency, wb_radio_get_rx_sensitivity,
@@ -6,6 +5,7 @@ use crate::v2025a::bindings::{
     wb_radio_set_address, wb_radio_set_bitrate, wb_radio_set_callback, wb_radio_set_channel,
     wb_radio_set_frequency, wb_radio_set_rx_sensitivity, wb_radio_set_tx_power,
 };
+use crate::v2025a::SimulatorError;
 use std::ffi::{CStr, CString};
 
 pub struct Radio(bindings::WbDeviceTag);

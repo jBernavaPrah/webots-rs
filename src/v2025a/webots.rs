@@ -1,9 +1,9 @@
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_robot_cleanup, wb_robot_get_basic_time_step, wb_robot_get_device,
-    wb_robot_get_time, wb_robot_step,
+    wb_robot_cleanup, wb_robot_get_basic_time_step, wb_robot_get_device, wb_robot_get_time,
+    wb_robot_step, WbDeviceTag,
 };
 use crate::v2025a::device::lidar::{Lidar, LidarConfig};
-use crate::v2025a::{SimulatorError, device, supervisor};
+use crate::v2025a::{device, supervisor, SimulatorError};
 use std::ffi::CString;
 use std::os::raw::c_int;
 
@@ -27,9 +27,11 @@ pub struct Webots {
     cleanup_on_drop: bool,
 }
 
+/// Alias kept for ergonomic compatibility with simulator-oriented naming.
 pub type Simulator = Webots;
 
 impl Webots {
+    /// Initializes the Webots controller runtime for the current process.
     pub fn new() -> Result<Self, SimulatorError> {
         ffi_try!(wb_robot_init_wrapper())?;
         unsafe { libc::signal(libc::SIGINT, libc::SIG_DFL) };
@@ -38,6 +40,9 @@ impl Webots {
         })
     }
 
+    /// Advances the simulation by one controller step.
+    ///
+    /// Returns `Ok(false)` when Webots requests controller shutdown.
     pub fn step(&self, step_ms: i32) -> Result<bool, SimulatorError> {
         let step_result = ffi_try!(wb_robot_step(step_ms))?;
         Ok(step_result != -1)
@@ -237,11 +242,13 @@ impl Webots {
         supervisor::Supervisor::new()
     }
 
+    /// Returns the controller basic time step configured in the world file.
     pub fn get_basic_time_step(&self) -> Result<f64, SimulatorError> {
         let timestep = ffi_try!(wb_robot_get_basic_time_step())?;
         Ok(timestep)
     }
 
+    /// Returns the current simulation time in seconds.
     pub fn get_time(&self) -> Result<f64, SimulatorError> {
         let time = ffi_try!(wb_robot_get_time())?;
         Ok(time)

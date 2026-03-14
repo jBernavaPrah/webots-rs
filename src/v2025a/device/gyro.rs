@@ -1,8 +1,8 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_gyro_disable, wb_gyro_enable, wb_gyro_get_lookup_table,
-    wb_gyro_get_lookup_table_size, wb_gyro_get_sampling_period, wb_gyro_get_values,
+    wb_gyro_disable, wb_gyro_enable, wb_gyro_get_lookup_table, wb_gyro_get_lookup_table_size,
+    wb_gyro_get_sampling_period, wb_gyro_get_values, WbDeviceTag,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Gyro {

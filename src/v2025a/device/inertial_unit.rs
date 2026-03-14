@@ -1,9 +1,9 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_inertial_unit_disable, wb_inertial_unit_enable, wb_inertial_unit_get_noise,
+    wb_inertial_unit_disable, wb_inertial_unit_enable, wb_inertial_unit_get_noise,
     wb_inertial_unit_get_quaternion, wb_inertial_unit_get_roll_pitch_yaw,
-    wb_inertial_unit_get_sampling_period,
+    wb_inertial_unit_get_sampling_period, WbDeviceTag,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct InertialUnit {

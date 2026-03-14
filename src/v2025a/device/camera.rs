@@ -1,10 +1,8 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbCameraRecognitionObject, WbDeviceTag, wb_camera_disable, wb_camera_enable,
-    wb_camera_get_exposure, wb_camera_get_focal_distance, wb_camera_get_focal_length,
-    wb_camera_get_fov, wb_camera_get_height, wb_camera_get_image, wb_camera_get_max_focal_distance,
-    wb_camera_get_max_fov, wb_camera_get_min_focal_distance, wb_camera_get_min_fov,
-    wb_camera_get_near, wb_camera_get_sampling_period, wb_camera_get_width,
+    wb_camera_disable, wb_camera_enable, wb_camera_get_exposure, wb_camera_get_focal_distance,
+    wb_camera_get_focal_length, wb_camera_get_fov, wb_camera_get_height, wb_camera_get_image,
+    wb_camera_get_max_focal_distance, wb_camera_get_max_fov, wb_camera_get_min_focal_distance,
+    wb_camera_get_min_fov, wb_camera_get_near, wb_camera_get_sampling_period, wb_camera_get_width,
     wb_camera_has_recognition, wb_camera_recognition_disable,
     wb_camera_recognition_disable_segmentation, wb_camera_recognition_enable,
     wb_camera_recognition_enable_segmentation, wb_camera_recognition_get_number_of_objects,
@@ -12,7 +10,9 @@ use crate::v2025a::bindings::{
     wb_camera_recognition_get_segmentation_image, wb_camera_recognition_has_segmentation,
     wb_camera_recognition_is_segmentation_enabled, wb_camera_recognition_save_segmentation_image,
     wb_camera_save_image, wb_camera_set_exposure, wb_camera_set_focal_distance, wb_camera_set_fov,
+    WbCameraRecognitionObject, WbDeviceTag,
 };
+use crate::v2025a::SimulatorError;
 use std::ffi::CString;
 
 #[derive(Debug, Clone, Copy)]

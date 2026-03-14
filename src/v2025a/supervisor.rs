@@ -6,14 +6,18 @@ use std::ffi::{CStr, CString};
 use std::os::raw::{c_char, c_int};
 use std::slice;
 
-use crate::v2025a::{SimulatorError, bindings};
+use crate::v2025a::{bindings, SimulatorError};
 
 fn bool_from_c_char(value: c_char) -> bool {
     value != 0
 }
 
 fn bool_to_c_char(value: bool) -> c_char {
-    if value { 1 } else { 0 }
+    if value {
+        1
+    } else {
+        0
+    }
 }
 
 fn string_from_ptr(ptr: *const c_char) -> Result<String, SimulatorError> {

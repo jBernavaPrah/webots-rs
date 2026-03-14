@@ -1,8 +1,8 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
     wb_robot_battery_sensor_disable, wb_robot_battery_sensor_enable,
     wb_robot_battery_sensor_get_sampling_period, wb_robot_battery_sensor_get_value,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct BatterySensor;

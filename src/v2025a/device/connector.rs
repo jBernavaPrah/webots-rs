@@ -1,9 +1,9 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_connector_disable_presence, wb_connector_enable_presence,
-    wb_connector_get_presence, wb_connector_get_presence_sampling_period, wb_connector_is_locked,
-    wb_connector_lock, wb_connector_unlock,
+    wb_connector_disable_presence, wb_connector_enable_presence, wb_connector_get_presence,
+    wb_connector_get_presence_sampling_period, wb_connector_is_locked, wb_connector_lock,
+    wb_connector_unlock, WbDeviceTag,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Connector {

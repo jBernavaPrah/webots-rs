@@ -1,5 +1,5 @@
+use crate::v2025a::bindings::{wb_led_get, wb_led_set, WbDeviceTag};
 use crate::v2025a::SimulatorError;
-use crate::v2025a::bindings::{WbDeviceTag, wb_led_get, wb_led_set};
 
 #[derive(Debug, Clone, Copy)]
 pub struct Led {

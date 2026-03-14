@@ -1,12 +1,12 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_gps_convert_to_degrees_minutes_seconds, wb_gps_disable, wb_gps_enable,
+    wb_gps_convert_to_degrees_minutes_seconds, wb_gps_disable, wb_gps_enable,
     wb_gps_get_coordinate_system, wb_gps_get_sampling_period, wb_gps_get_speed,
-    wb_gps_get_speed_vector, wb_gps_get_values,
+    wb_gps_get_speed_vector, wb_gps_get_values, WbDeviceTag,
 };
 use crate::v2025a::bindings::{
     WbGpsCoordinateSystem_WB_GPS_LOCAL_COORDINATE, WbGpsCoordinateSystem_WB_GPS_WGS84_COORDINATE,
 };
+use crate::v2025a::SimulatorError;
 use std::ffi::CStr;
 
 #[derive(Debug, Clone, Copy)]

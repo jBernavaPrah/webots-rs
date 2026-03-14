@@ -1,8 +1,8 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_altimeter_disable, wb_altimeter_enable, wb_altimeter_get_sampling_period,
-    wb_altimeter_get_value,
+    wb_altimeter_disable, wb_altimeter_enable, wb_altimeter_get_sampling_period,
+    wb_altimeter_get_value, WbDeviceTag,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Altimeter {

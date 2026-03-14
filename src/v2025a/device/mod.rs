@@ -1,4 +1,5 @@
-// This module is specific to the v2025a Webots API surface.
+//! Device wrappers for the `v2025a` Webots controller API.
+
 pub mod accelerometer;
 pub mod altimeter;
 pub mod battery_sensor;

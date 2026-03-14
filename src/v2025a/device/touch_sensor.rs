@@ -1,13 +1,13 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_touch_sensor_disable, wb_touch_sensor_enable, wb_touch_sensor_get_lookup_table,
+    wb_touch_sensor_disable, wb_touch_sensor_enable, wb_touch_sensor_get_lookup_table,
     wb_touch_sensor_get_lookup_table_size, wb_touch_sensor_get_sampling_period,
-    wb_touch_sensor_get_type, wb_touch_sensor_get_value, wb_touch_sensor_get_values,
+    wb_touch_sensor_get_type, wb_touch_sensor_get_value, wb_touch_sensor_get_values, WbDeviceTag,
 };
 use crate::v2025a::bindings::{
     WbTouchSensorType_WB_TOUCH_SENSOR_BUMPER, WbTouchSensorType_WB_TOUCH_SENSOR_FORCE,
     WbTouchSensorType_WB_TOUCH_SENSOR_FORCE3D,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum TouchSensorType {

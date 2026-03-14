@@ -1,16 +1,16 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_distance_sensor_disable, wb_distance_sensor_enable,
-    wb_distance_sensor_get_aperture, wb_distance_sensor_get_lookup_table,
-    wb_distance_sensor_get_lookup_table_size, wb_distance_sensor_get_max_value,
-    wb_distance_sensor_get_min_value, wb_distance_sensor_get_sampling_period,
-    wb_distance_sensor_get_type, wb_distance_sensor_get_value,
+    wb_distance_sensor_disable, wb_distance_sensor_enable, wb_distance_sensor_get_aperture,
+    wb_distance_sensor_get_lookup_table, wb_distance_sensor_get_lookup_table_size,
+    wb_distance_sensor_get_max_value, wb_distance_sensor_get_min_value,
+    wb_distance_sensor_get_sampling_period, wb_distance_sensor_get_type,
+    wb_distance_sensor_get_value, WbDeviceTag,
 };
 use crate::v2025a::bindings::{
     WbDistanceSensorType_WB_DISTANCE_SENSOR_GENERIC,
     WbDistanceSensorType_WB_DISTANCE_SENSOR_INFRA_RED,
     WbDistanceSensorType_WB_DISTANCE_SENSOR_LASER, WbDistanceSensorType_WB_DISTANCE_SENSOR_SONAR,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum DistanceSensorType {

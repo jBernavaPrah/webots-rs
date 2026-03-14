@@ -2,6 +2,13 @@
 
 Rust bindings and safe wrappers for the Webots controller API.
 
+[![CI](https://github.com/jBernavaPrah/webots-rs/actions/workflows/ci.yml/badge.svg)](https://github.com/jBernavaPrah/webots-rs/actions/workflows/ci.yml)
+[![Crates.io](https://img.shields.io/crates/v/webots.svg)](https://crates.io/crates/webots)
+[![Docs.rs](https://img.shields.io/docsrs/webots)](https://docs.rs/webots)
+
+`webots` provides checked-in Rust bindings for the Webots controller API plus a thin, safe wrapper
+layer for common controller operations and device access.
+
 ## Build model
 
 This crate is designed so companion crates can compile on machines that do not have Webots
@@ -15,6 +22,13 @@ installed.
 
 This makes the default mode suitable for CI/CD jobs where the goal is to compile Rust code, not
 to execute it inside Webots.
+
+## Highlights
+
+- Checked-in generated bindings for reproducible builds.
+- Safe wrapper entrypoints for robot lifecycle and common devices.
+- Versioned API namespaces so multiple Webots releases can coexist over time.
+- Optional runtime linking for real controller binaries.
 
 ## Usage
 
@@ -41,6 +55,29 @@ webots = { version = "0.1", features = ["runtime_link"] }
 
 Runtime linking looks for Webots in the standard host install location and also honors
 `WEBOTS_HOME` if Webots already set it.
+
+## Quick start
+
+```rust,no_run
+use webots::Webots;
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let webots = Webots::new()?;
+    let time_step = webots.get_basic_time_step()? as i32;
+
+    let left_motor = webots.motor("left wheel motor")?;
+    let right_motor = webots.motor("right wheel motor")?;
+
+    left_motor.set_velocity(3.0)?;
+    right_motor.set_velocity(3.0)?;
+
+    while webots.step(time_step)? {
+        // controller loop
+    }
+
+    Ok(())
+}
+```
 
 ## Example
 
@@ -69,6 +106,16 @@ The selected version is exposed in Rust as `webots::WEBOTS_API_VERSION`.
 The current versioned namespace is `webots::v2025a`.
 
 Each supported Webots release owns its own Rust module tree under `src/vXXXX/`.
+
+## Release and CI
+
+The repository ships with GitHub Actions for:
+
+- CI on pushes and pull requests: `fmt`, `check`, `clippy`, `doc`, and `cargo package`.
+- Tag-driven releases: pushing a tag like `v0.1.0` validates the crate, publishes it to
+  crates.io, and creates a GitHub release.
+
+The release workflow expects a `CARGO_REGISTRY_TOKEN` repository secret.
 
 ## Maintainer workflow
 

@@ -1,9 +1,9 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_vacuum_gripper_disable_presence, wb_vacuum_gripper_enable_presence,
+    wb_vacuum_gripper_disable_presence, wb_vacuum_gripper_enable_presence,
     wb_vacuum_gripper_get_presence, wb_vacuum_gripper_get_presence_sampling_period,
-    wb_vacuum_gripper_is_on, wb_vacuum_gripper_turn_off, wb_vacuum_gripper_turn_on,
+    wb_vacuum_gripper_is_on, wb_vacuum_gripper_turn_off, wb_vacuum_gripper_turn_on, WbDeviceTag,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct VacuumGripper {

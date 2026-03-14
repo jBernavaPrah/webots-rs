@@ -1,10 +1,10 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
     self, wb_range_finder_disable, wb_range_finder_enable, wb_range_finder_get_fov,
     wb_range_finder_get_height, wb_range_finder_get_max_range, wb_range_finder_get_min_range,
     wb_range_finder_get_range_image, wb_range_finder_get_sampling_period,
     wb_range_finder_get_width, wb_range_finder_save_image,
 };
+use crate::v2025a::SimulatorError;
 use std::ffi::CString;
 
 pub struct RangeFinder(bindings::WbDeviceTag);

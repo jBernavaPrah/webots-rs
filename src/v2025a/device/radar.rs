@@ -1,9 +1,9 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_radar_disable, wb_radar_enable, wb_radar_get_horizontal_fov,
-    wb_radar_get_max_range, wb_radar_get_min_range, wb_radar_get_number_of_targets,
-    wb_radar_get_sampling_period, wb_radar_get_targets, wb_radar_get_vertical_fov,
+    wb_radar_disable, wb_radar_enable, wb_radar_get_horizontal_fov, wb_radar_get_max_range,
+    wb_radar_get_min_range, wb_radar_get_number_of_targets, wb_radar_get_sampling_period,
+    wb_radar_get_targets, wb_radar_get_vertical_fov, WbDeviceTag,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct RadarTarget {

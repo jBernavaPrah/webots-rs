@@ -5,6 +5,8 @@ edition = "2021"
 license = "MIT OR Apache-2.0"
 description = "Safe Rust bindings and wrappers for the Webots controller API"
 documentation = "https://docs.rs/webots"
+homepage = "https://github.com/jBernavaPrah/webots-rs"
+repository = "https://github.com/jBernavaPrah/webots-rs"
 readme = "README.md"
 keywords = ["webots", "robotics", "simulation", "ffi"]
 categories = ["api-bindings", "robotics", "simulation"]
@@ -12,6 +14,12 @@ exclude = [".idea/**", "bindings-generator/**"]
 
 [workspace]
 members = ["bindings-generator"]
+resolver = "2"
+
+[package.metadata.docs.rs]
+no-default-features = false
+features = ["v2025a"]
+rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
 derive-new = "0.7.0"

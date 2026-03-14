@@ -1,9 +1,9 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_accelerometer_disable, wb_accelerometer_enable,
-    wb_accelerometer_get_lookup_table, wb_accelerometer_get_lookup_table_size,
-    wb_accelerometer_get_sampling_period, wb_accelerometer_get_values,
+    wb_accelerometer_disable, wb_accelerometer_enable, wb_accelerometer_get_lookup_table,
+    wb_accelerometer_get_lookup_table_size, wb_accelerometer_get_sampling_period,
+    wb_accelerometer_get_values, WbDeviceTag,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Accelerometer {

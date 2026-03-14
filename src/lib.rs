@@ -1,6 +1,8 @@
-//! Webots simulator bindings and utilities.
-//!
-//! This crate provides versioned Rust wrappers around the Webots C API.
+#![doc = include_str!("../README.md")]
+//! Additional crate docs:
+//! - [`Webots`] is the primary controller entrypoint.
+//! - [`Simulator`] is a type alias for [`Webots`].
+//! - [`WEBOTS_API_VERSION`] exposes the selected bindings version at compile time.
 
 #![allow(clippy::macro_metavars_in_unsafe)]
 
@@ -10,5 +12,6 @@ pub mod v2025a;
 #[cfg(feature = "v2025a")]
 pub use v2025a::*;
 
+/// The active Webots API namespace selected by Cargo features.
 #[cfg(feature = "v2025a")]
 pub const WEBOTS_API_VERSION: &str = v2025a::API_VERSION;

@@ -1,7 +1,7 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_touch_sensor_disable, wb_touch_sensor_enable, wb_touch_sensor_get_values,
+    wb_touch_sensor_disable, wb_touch_sensor_enable, wb_touch_sensor_get_values, WbDeviceTag,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct TouchSensor3D {

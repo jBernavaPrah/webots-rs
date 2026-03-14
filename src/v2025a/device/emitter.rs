@@ -1,8 +1,8 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_emitter_get_buffer_size, wb_emitter_get_channel, wb_emitter_get_range,
-    wb_emitter_send, wb_emitter_set_channel, wb_emitter_set_range,
+    wb_emitter_get_buffer_size, wb_emitter_get_channel, wb_emitter_get_range, wb_emitter_send,
+    wb_emitter_set_channel, wb_emitter_set_range, WbDeviceTag,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Emitter {

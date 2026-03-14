@@ -1,10 +1,10 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_brake_get_motor, wb_brake_get_position_sensor, wb_brake_get_type,
-    wb_brake_set_damping_constant,
+    wb_brake_get_motor, wb_brake_get_position_sensor, wb_brake_get_type,
+    wb_brake_set_damping_constant, WbDeviceTag,
 };
 use crate::v2025a::bindings::{WbJointType_WB_LINEAR, WbJointType_WB_ROTATIONAL};
 use crate::v2025a::device::motor::MotorType;
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Brake {

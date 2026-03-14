@@ -9,7 +9,10 @@ const ENV_WEBOTS_HOME: &str = "WEBOTS_HOME";
 const ENV_WEBOTS_LINK: &str = "WEBOTS_LINK";
 fn feature_env_to_version(feature: &str) -> Option<String> {
     let version = feature.strip_prefix("CARGO_FEATURE_V")?;
-    Some(format!("v{}", version.to_ascii_lowercase().replace('_', "")))
+    Some(format!(
+        "v{}",
+        version.to_ascii_lowercase().replace('_', "")
+    ))
 }
 
 fn selected_bindings_version() -> Result<String, Box<dyn std::error::Error>> {
@@ -269,7 +272,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     println!("cargo:rerun-if-changed={}", bindings_src_path.display());
     println!("cargo:rerun-if-changed={}", wrapper_header_path.display());
-    println!("cargo:rustc-cfg=webots_api_version=\"{}\"", bindings_version);
+    println!(
+        "cargo:rustc-cfg=webots_api_version=\"{}\"",
+        bindings_version
+    );
 
     if !bindings_src_path.exists() {
         return Err(format!(

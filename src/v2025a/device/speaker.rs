@@ -1,9 +1,9 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
     self, wb_speaker_get_engine, wb_speaker_get_language, wb_speaker_is_sound_playing,
     wb_speaker_is_speaking, wb_speaker_play_sound, wb_speaker_set_engine, wb_speaker_set_language,
     wb_speaker_speak, wb_speaker_stop,
 };
+use crate::v2025a::SimulatorError;
 use std::ffi::{CStr, CString};
 
 #[derive(Debug, Clone, Copy)]

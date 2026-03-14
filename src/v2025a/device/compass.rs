@@ -1,8 +1,9 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_compass_disable, wb_compass_enable, wb_compass_get_lookup_table,
+    wb_compass_disable, wb_compass_enable, wb_compass_get_lookup_table,
     wb_compass_get_lookup_table_size, wb_compass_get_sampling_period, wb_compass_get_values,
+    WbDeviceTag,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Compass {

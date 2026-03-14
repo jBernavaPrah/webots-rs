@@ -1,6 +1,5 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_motor_disable_force_feedback, wb_motor_disable_torque_feedback,
+    wb_motor_disable_force_feedback, wb_motor_disable_torque_feedback,
     wb_motor_enable_force_feedback, wb_motor_enable_torque_feedback, wb_motor_get_acceleration,
     wb_motor_get_available_force, wb_motor_get_available_torque, wb_motor_get_brake,
     wb_motor_get_force_feedback, wb_motor_get_force_feedback_sampling_period,
@@ -10,9 +9,10 @@ use crate::v2025a::bindings::{
     wb_motor_get_torque_feedback_sampling_period, wb_motor_get_type, wb_motor_get_velocity,
     wb_motor_set_acceleration, wb_motor_set_available_force, wb_motor_set_available_torque,
     wb_motor_set_control_pid, wb_motor_set_force, wb_motor_set_position, wb_motor_set_torque,
-    wb_motor_set_velocity,
+    wb_motor_set_velocity, WbDeviceTag,
 };
 use crate::v2025a::bindings::{WbJointType_WB_LINEAR, WbJointType_WB_ROTATIONAL};
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum MotorType {

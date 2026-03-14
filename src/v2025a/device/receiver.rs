@@ -1,10 +1,10 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_receiver_disable, wb_receiver_enable, wb_receiver_get_channel,
-    wb_receiver_get_data, wb_receiver_get_data_size, wb_receiver_get_emitter_direction,
-    wb_receiver_get_queue_length, wb_receiver_get_sampling_period, wb_receiver_get_signal_strength,
-    wb_receiver_next_packet, wb_receiver_set_channel,
+    wb_receiver_disable, wb_receiver_enable, wb_receiver_get_channel, wb_receiver_get_data,
+    wb_receiver_get_data_size, wb_receiver_get_emitter_direction, wb_receiver_get_queue_length,
+    wb_receiver_get_sampling_period, wb_receiver_get_signal_strength, wb_receiver_next_packet,
+    wb_receiver_set_channel, WbDeviceTag,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone)]
 pub struct ReceiverMessage {

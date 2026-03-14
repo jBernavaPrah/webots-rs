@@ -1,9 +1,9 @@
-use crate::v2025a::SimulatorError;
 use crate::v2025a::bindings::{
-    WbDeviceTag, wb_light_sensor_disable, wb_light_sensor_enable, wb_light_sensor_get_lookup_table,
+    wb_light_sensor_disable, wb_light_sensor_enable, wb_light_sensor_get_lookup_table,
     wb_light_sensor_get_lookup_table_size, wb_light_sensor_get_sampling_period,
-    wb_light_sensor_get_value,
+    wb_light_sensor_get_value, WbDeviceTag,
 };
+use crate::v2025a::SimulatorError;
 
 #[derive(Debug, Clone, Copy)]
 pub struct LightSensor {
