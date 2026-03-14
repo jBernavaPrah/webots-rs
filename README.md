@@ -112,10 +112,11 @@ Each supported Webots release owns its own Rust module tree under `src/vXXXX/`.
 The repository ships with GitHub Actions for:
 
 - CI on pushes and pull requests: `fmt`, `check`, `clippy`, `doc`, and `cargo package`.
-- Tag-driven releases: pushing a tag like `v0.1.0` validates the crate, publishes it to
-  crates.io, and creates a GitHub release.
+- `release-plz`-driven releases: pushes to `main`/`master` update or create a release PR, and
+  merging that PR publishes the crate to crates.io and creates a GitHub release.
 
-The release workflow expects a `CARGO_REGISTRY_TOKEN` repository secret.
+The release workflow expects a `CARGO_REGISTRY_TOKEN` repository secret and uses the default
+`GITHUB_TOKEN` for release PRs and GitHub releases.
 
 ## Maintainer workflow
 
