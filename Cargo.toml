@@ -1,0 +1,25 @@
+[package]
+name = "webots"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "Safe Rust bindings and wrappers for the Webots controller API"
+documentation = "https://docs.rs/webots"
+readme = "README.md"
+keywords = ["webots", "robotics", "simulation", "ffi"]
+categories = ["api-bindings", "robotics", "simulation"]
+exclude = [".idea/**", "bindings-generator/**"]
+
+[workspace]
+members = ["bindings-generator"]
+
+[dependencies]
+derive-new = "0.7.0"
+derive_setters = "0.1.9"
+thiserror = "2.0.18"
+libc = "0.2"
+
+[features]
+default = ["v2025a"]
+v2025a = []
+runtime_link = []

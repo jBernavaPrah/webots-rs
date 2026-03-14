@@ -1,0 +1,2 @@
+[alias]
+bindings-generator = "run --package bindings-generator --"

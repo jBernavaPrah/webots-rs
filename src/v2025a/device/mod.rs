@@ -1,0 +1,27 @@
+// This module is specific to the v2025a Webots API surface.
+pub mod accelerometer;
+pub mod altimeter;
+pub mod battery_sensor;
+pub mod brake;
+pub mod camera;
+pub mod compass;
+pub mod connector;
+pub mod distance_sensor;
+pub mod emitter;
+pub mod gps;
+pub mod gyro;
+pub mod inertial_unit;
+pub mod led;
+pub mod lidar;
+pub mod light_sensor;
+pub mod microphone;
+pub mod motor;
+pub mod position_sensor;
+pub mod radar;
+pub mod radio;
+pub mod range_finder;
+pub mod receiver;
+pub mod speaker;
+pub mod touch_sensor;
+pub mod touch_sensor3d;
+pub mod vacuum_gripper;
