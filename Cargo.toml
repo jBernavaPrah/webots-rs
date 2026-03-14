@@ -9,7 +9,7 @@ homepage = "https://github.com/jBernavaPrah/webots-rs"
 repository = "https://github.com/jBernavaPrah/webots-rs"
 readme = "README.md"
 keywords = ["webots", "robotics", "simulation", "ffi"]
-categories = ["api-bindings", "robotics", "simulation"]
+categories = ["api-bindings", "science::robotics", "simulation"]
 exclude = [".idea/**", "bindings-generator/**"]
 
 [workspace]
