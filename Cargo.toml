@@ -30,4 +30,3 @@ libc = "0.2"
 [features]
 default = ["v2025a"]
 v2025a = []
-runtime_link = []

@@ -16,11 +16,11 @@ installed.
 
 - Default builds use checked-in, versioned bindings such as `src/v2025a/bindings.rs`.
 - Default builds also select a versioned wrapper header such as `headers/2025a/wrapper.h`.
-- Default builds do not link `libController`.
-- Real controller linking is opt-in through the `runtime_link` feature.
+- Real controller linking happens automatically if Webots is installed in a standard location or if `WEBOTS_HOME` is set.
+- If Webots is not installed, the build script will automatically fall back to generating stub bindings.
 - Running a controller still requires a valid Webots installation.
 
-This makes the default mode suitable for CI/CD jobs where the goal is to compile Rust code, not
+This fallback behavior makes the crate suitable for CI/CD jobs where the goal is to compile Rust code, not
 to execute it inside Webots.
 
 ## Highlights
@@ -28,11 +28,11 @@ to execute it inside Webots.
 - Checked-in generated bindings for reproducible builds.
 - Safe wrapper entrypoints for robot lifecycle and common devices.
 - Versioned API namespaces so multiple Webots releases can coexist over time.
-- Optional runtime linking for real controller binaries.
+- Automatic runtime linking for real controller binaries with fallback to stubs for CI/CD.
 
 ## Usage
 
-Library-only or CI compilation:
+Basic usage:
 
 ```toml
 [dependencies]
@@ -41,25 +41,21 @@ webots = "0.1"
 
 Version-explicit API:
 
-```rust
-let simulator = webots::v2025a::Simulator::new()?;
-let webots = webots::v2025a::Webots::new()?;
+```rust,no_run
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let simulator = webots_rs::v2025a::Simulator::new()?;
+    let webots = webots_rs::v2025a::Webots::new()?;
+    Ok(())
+}
 ```
 
-Executable controller that should link against a real Webots installation:
-
-```toml
-[dependencies]
-webots = { version = "0.1", features = ["runtime_link"] }
-```
-
-Runtime linking looks for Webots in the standard host install location and also honors
-`WEBOTS_HOME` if Webots already set it.
+Runtime linking automatically looks for Webots in the standard host install location and also honors
+`WEBOTS_HOME` if Webots already set it. If it cannot find Webots, it falls back to stub bindings, which is useful for CI/CD.
 
 ## Quick start
 
 ```rust,no_run
-use webots::Webots;
+use webots_rs::Webots;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let webots = Webots::new()?;
@@ -82,7 +78,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 ## Example
 
 ```rust,no_run
-use webots::Webots;
+use webots_rs::Webots;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let webots = Webots::new()?;
@@ -157,13 +153,3 @@ No `build.rs` changes are needed for a new version.
 2. Edit `headers/2025b/wrapper.h` for the new Webots header surface.
 3. Run `cargo bindings-generator v2025b`.
 4. Review `src/v2025b/` and make any API changes required by that Webots release.
-
-## Runtime linking
-
-To link the real Webots controller library during build:
-
-```bash
-cargo build --features runtime_link
-```
-
-If runtime linking is requested and Webots is missing from the standard install location, the build fails fast.
