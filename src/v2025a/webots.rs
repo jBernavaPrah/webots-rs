@@ -1,10 +1,11 @@
 use crate::v2025a::bindings::{
-    wb_robot_cleanup, wb_robot_get_basic_time_step, wb_robot_get_device, wb_robot_get_time,
-    wb_robot_step, WbDeviceTag,
+    wb_device_get_name, wb_robot_cleanup, wb_robot_get_basic_time_step, wb_robot_get_device,
+    wb_robot_get_device_by_index, wb_robot_get_number_of_devices, wb_robot_get_time, wb_robot_step,
+    WbDeviceTag,
 };
 use crate::v2025a::device::lidar::{Lidar, LidarConfig};
 use crate::v2025a::{device, supervisor, SimulatorError};
-use std::ffi::CString;
+use std::ffi::{CStr, CString};
 use std::os::raw::c_int;
 
 #[cfg(windows)]
@@ -252,6 +253,27 @@ impl Webots {
     pub fn get_time(&self) -> Result<f64, SimulatorError> {
         let time = ffi_try!(wb_robot_get_time())?;
         Ok(time)
+    }
+
+    pub fn get_number_of_devices(&self) -> Result<i32, SimulatorError> {
+        let count = ffi_try!(wb_robot_get_number_of_devices())?;
+        Ok(count.max(0))
+    }
+
+    pub fn get_device_name_by_index(&self, index: i32) -> Result<String, SimulatorError> {
+        let tag = ffi_try!(wb_robot_get_device_by_index(index))?;
+        if (tag as i32) == 0 {
+            return Err(SimulatorError::UnknownDevice(format!(
+                "device-index-{index}"
+            )));
+        }
+        let name_ptr = ffi_try!(wb_device_get_name(tag))?;
+        if name_ptr.is_null() {
+            return Err(SimulatorError::UnknownDevice(format!(
+                "device-index-{index}"
+            )));
+        }
+        Ok(unsafe { CStr::from_ptr(name_ptr) }.to_str()?.to_string())
     }
 }
 
