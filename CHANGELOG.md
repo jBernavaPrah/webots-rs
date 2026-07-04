@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3](https://github.com/jBernavaPrah/webots-rs/compare/webots-rs-v0.1.2...webots-rs-v0.1.3) - 2026-07-04
+
+### Fixed
+
+- portable c_char cast in radio message send ([#5](https://github.com/jBernavaPrah/webots-rs/pull/5))
+
 ## [0.1.2](https://github.com/jBernavaPrah/webots-rs/compare/webots-rs-v0.1.1...webots-rs-v0.1.2) - 2026-03-22
 
 ### Added
