@@ -104,7 +104,7 @@ impl Radio {
         let destination_cstring = CString::new(destination)?;
         let msg = ffi_try!(wb_radio_message_new(
             message.len() as i32,
-            message.as_ptr() as *const i8,
+            message.as_ptr().cast::<std::ffi::c_char>(),
             destination_cstring.as_ptr()
         ))?;
         ffi_try!(wb_radio_send(self.0, msg, delay))?;
