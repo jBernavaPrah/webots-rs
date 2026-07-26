@@ -173,6 +173,7 @@ fn rewrite_version_paths(
 fn ensure_feature_in_manifest(
     workspace_root: &Path,
     version: &str,
+    from: &str,
 ) -> Result<(), Box<dyn std::error::Error>> {
     let manifest_path = workspace_root.join("Cargo.toml");
     let manifest = fs::read_to_string(&manifest_path)?;
@@ -182,12 +183,13 @@ fn ensure_feature_in_manifest(
         return Ok(());
     }
 
-    let updated = manifest.replace(
-        "runtime_link = []",
-        &format!("{feature_line}\nruntime_link = []"),
-    );
+    let anchor = format!("{from} = []");
+    let updated = manifest.replace(&anchor, &format!("{anchor}\n{feature_line}"));
     if updated == manifest {
-        return Err("Could not update Cargo.toml features section.".into());
+        return Err(format!(
+            "Could not find feature '{from}' in Cargo.toml to insert '{version}' after."
+        )
+        .into());
     }
 
     fs::write(manifest_path, updated)?;
@@ -264,7 +266,7 @@ fn scaffold_version(
     fs::create_dir_all(destination_header_parent)?;
     fs::copy(source_header, &destination_header)?;
 
-    ensure_feature_in_manifest(workspace_root, version)?;
+    ensure_feature_in_manifest(workspace_root, version, from)?;
     ensure_lib_exports(workspace_root, version)?;
 
     println!(

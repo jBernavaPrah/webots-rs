@@ -15,19 +15,6 @@ macro_rules! ffi_try {
     };
 }
 
-#[cfg(not(webots_runtime_linked))]
-mod bindings_stubs {
-    use crate::v2025a::bindings::*;
-
-    include!(concat!(env!("OUT_DIR"), "/bindings_stubs.rs"));
-
-    #[cfg(windows)]
-    #[no_mangle]
-    pub unsafe extern "C" fn wb_robot_init_msvc() -> ::std::os::raw::c_int {
-        unsafe { ::std::mem::zeroed() }
-    }
-}
-
 pub mod device;
 pub mod supervisor;
 mod webots;
