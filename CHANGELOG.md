@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0](https://github.com/jBernavaPrah/webots-rs/compare/webots-rs-v0.1.3...webots-rs-v0.2.0) - 2026-07-26
+
+### Added
+
+- [**breaking**] require a Webots installation at build time ([#7](https://github.com/jBernavaPrah/webots-rs/pull/7))
+
 ## [0.1.3](https://github.com/jBernavaPrah/webots-rs/compare/webots-rs-v0.1.2...webots-rs-v0.1.3) - 2026-07-04
 
 ### Fixed
