@@ -23,6 +23,29 @@ jobs:
       - name: Cache Cargo artifacts
         uses: Swatinem/rust-cache@v2
 
+      - name: Cache Webots download
+        id: cache-webots
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/webots.tar.bz2
+          key: webots-R2025a-x86-64.tar.bz2
+
+      - name: Download Webots
+        if: steps.cache-webots.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error \
+            https://github.com/cyberbotics/webots/releases/download/R2025a/webots-R2025a-x86-64.tar.bz2 \
+            --output "$RUNNER_TEMP/webots.tar.bz2"
+
+      - name: Install Webots
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -xjf "$RUNNER_TEMP/webots.tar.bz2" -C "$RUNNER_TEMP"
+          echo "WEBOTS_HOME=$RUNNER_TEMP/webots" >> "$GITHUB_ENV"
+
       - name: Check formatting
         run: cargo fmt --all -- --check
 
